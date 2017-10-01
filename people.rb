@@ -36,6 +36,16 @@ class Instructor < Person
 end
 
 
-instructor = Person.new("Nadia")
+instructor = Instructor.new("Nadia")
 
 instructor.greeting
+
+student = Student.new("Chris")
+
+student.greeting
+
+instructor.teach
+
+student.learn
+
+student.teach #doesn't work because student did not inherit the Instructor class

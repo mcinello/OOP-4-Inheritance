@@ -3,6 +3,10 @@ class Farm
 # farm wants to keep track of fields on the farm (corn and wheat)
   @@fields = []
 
+  def self.add(field)
+    @@fields << field
+  end
+
   # total amount of food farm has produced
   def self.total_amount_of_food
     sum = 0
@@ -10,6 +14,10 @@ class Farm
       sum += food
     end
     return sum
+  end
+
+  def self.fields
+    @@fields
   end
 
 end
@@ -41,3 +49,9 @@ class Field
   end
 
 end
+
+# adding field to farm
+Farm.add(Field.new("corn", 20))
+Farm.add(Field.new("wheat", 30))
+
+puts Farm.fields.inspect

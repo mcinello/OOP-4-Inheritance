@@ -8,20 +8,32 @@ class Farm
     @@fields << field
   end
 
-  # total amount of food farm has produced
-  def self.harvest
+  # Adds all hectares of food
+  def self.total_amount_of_food
     sum = 0
     @@fields.each do |food|
       sum += food.food_per_hectare
     end
-    puts "The farm has #{sum} harvested food so far."
+    return sum
   end
 
+  # total amount of food farm has produced
+  def self.harvest
+    puts "The farm has #{Farm.total_amount_of_food} harvested food so far."
+  end
+
+# Farm's status
   def self.status
     @@fields.each do |food|
       puts "#{food.field_type} field is #{food.food_per_hectare} hectares."
     end
       puts Farm.harvest
+  end
+
+# Lovely description of farm
+  def self.relax
+    puts "#{Farm.total_amount_of_food} hectares tall of green stalks rustling in the breeze fill your horizon."
+    puts "The sun hangs low, casting an orange glow on a sea of #{hectare} hectares of #{field_type}." # how do I get this to display?
   end
 
   def self.fields
@@ -74,4 +86,5 @@ end
 Farm.field(Field.new("corn", 0))
 Farm.field(Field.new("wheat", 0))
 
-puts Farm.status
+puts Farm.harvest
+puts Farm.relax

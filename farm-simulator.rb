@@ -17,6 +17,13 @@ class Farm
     puts "The farm has #{sum} harvested food so far."
   end
 
+  def self.status
+    @@fields.each do |food|
+      puts "#{food.field_type} field is #{food.food_per_hectare} hectares."
+    end
+      puts Farm.harvest
+  end
+
   def self.fields
     @@fields
   end
@@ -67,4 +74,4 @@ end
 Farm.field(Field.new("corn", 0))
 Farm.field(Field.new("wheat", 0))
 
-puts Farm.harvest
+puts Farm.status

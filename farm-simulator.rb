@@ -1,11 +1,23 @@
+
 class Farm
 
 # farm wants to keep track of fields on the farm (corn and wheat)
   @@fields = []
 
 # add field to farm
-  def self.field(field)
-    @@fields << field
+  def self.field
+    puts "What kind of field is it: corn or wheat?"
+    user_field_input = gets.chomp
+    puts "How large is the field in hectares?"
+   user_hectare_input = gets.to_i
+
+    if user_field_input == "corn"
+      new_field = Corn.new(user_hectare_input)
+    elsif user_field_input == "wheat"
+      new_field = Wheat.new(user_hectare_input)
+    end
+
+    @@fields << new_field
   end
 
   # Adds all hectares of food
@@ -33,7 +45,7 @@ class Farm
 # Lovely description of farm
   def self.relax
     puts "#{Farm.total_amount_of_food} hectares tall of green stalks rustling in the breeze fill your horizon."
-    puts "The sun hangs low, casting an orange glow on a sea of #{hectare} hectares of #{field_type}." # how do I get this to display?
+    puts "The sun hangs low, casting an orange glow on a sea of #{food_per_hectare} hectares of #{field type}." # how do I get this to display?
   end
 
   def self.fields
@@ -45,14 +57,13 @@ end
 class Field
 
   # field must be a type, and produces a different amount of food per hectare
-  def initialize(type, num)
-    @field_type = type
+  def initialize(num)
     @food_per_hectare = num.to_i
   end
 
-  def field_type
-    @field_type
-  end
+  # def self.field_type
+  #   @field_type
+  # end
 
   def food_per_hectare
     @food_per_hectare
@@ -83,8 +94,7 @@ end
 
 
 # adding field to farm
-Farm.field(Field.new("corn", 0))
-Farm.field(Field.new("wheat", 0))
-
-puts Farm.harvest
-puts Farm.relax
+Farm.field
+Farm.harvest
+Farm.field
+Farm.harvest

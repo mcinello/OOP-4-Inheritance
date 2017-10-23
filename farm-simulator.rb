@@ -119,8 +119,3 @@ end
 
 farm = Farm.new
 farm.main_menu
-
-# adding field to farm
-# Farm.field
-# Farm.fields
-# Corn.status

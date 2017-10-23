@@ -16,7 +16,7 @@ class Farm
     elsif user_field_input == "wheat"
       new_field = Wheat.new(user_hectare_input)
     end
-
+    puts "Added a #{user_field_input} field of #{user_hectare_input} hectares!"
     @@fields << new_field
   end
 
@@ -95,6 +95,5 @@ end
 
 # adding field to farm
 Farm.field
-Farm.harvest
 Farm.field
 Farm.harvest

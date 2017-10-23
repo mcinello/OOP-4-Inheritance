@@ -8,33 +8,30 @@ class Farm
   def main_menu
     while true # repeat indefinitely
       print_main_menu
-      user_selected = gets.to_i
-      call_option(user_selected)
+      user_command = gets.chomp
+      call_option(user_command)
     end
   end
 
   def print_main_menu
-    puts 'What would you like to do?'
-    puts '[1] Add a new field'
-    puts '[2] Check farm status'
-    puts '[3] Check total harvest'
-    puts '[4] Time to relax'
-    puts '[5] See all the fields'
-    puts '[6] Exit'
-    print 'Enter a number: '
+    puts "--------------------"
+    puts "Options:"
+    puts " field -> adds a new field"
+    puts " harvest -> harvests crops and adds to total harvested"
+    puts " status -> displays some information about the farm"
+    puts " relax -> provides lovely descriptions of your fields"
+    puts " exit -> exits the program"
+    puts "--------------------"
+    print '>> '
   end
 
-  def call_option(user_selected)
-    case user_selected
-    when 1 then field
-    when 2 then status
-    when 3 then harvest
-    when 4 then relax
-    when 5 then fields
-      when 6 then abort("Goodbye!")
-      # Finish off the rest for 3 through 6
-      # To be clear, the methods add_new_contact and modify_existing_contact
-      # haven't been implemented yet
+  def call_option(user_command)
+    case user_command
+      when "field" then field
+      when "harvest" then harvest
+      when "status" then status
+      when "relax" then relax
+      when "exit" then abort("Goodbye!")
     end
   end
 
@@ -85,7 +82,6 @@ class Farm
         sum += field.hectares
       end
     end
-
 
     puts "#{total_amount_of_food} hectares tall of green stalks rustling in the breeze fill your horizon."
     puts "The sun hangs low, casting an orange glow on a sea of #{sum} hectares of wheat." # how do I get this to display?
